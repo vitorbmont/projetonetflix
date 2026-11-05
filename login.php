@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <h1>Teste git</h1>
+    <title>Login - Netflix FATEC</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    cuzinho
+    <div class="formulario">
+        <h2>Entrar na Netflix</h2>
+        <form action="login.php" method="POST">
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button type="submit">ENTRAR</button>
+        </form>
+    </div>
 </body>
 </html>
