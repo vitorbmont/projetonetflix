@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Login - Netflix FATEC</title>
+    <title>Login - Tipo Netflix</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
