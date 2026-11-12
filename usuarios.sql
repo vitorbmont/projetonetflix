@@ -1,5 +1,5 @@
-create database net_login;
-use net_login;
+create database fatecflix_bd;
+use fatecflix_bd;
 
 create table usuarios (
   id int auto_increment primary key,
@@ -11,5 +11,3 @@ create table usuarios (
   data_cadastro timestamp default current_timestamp
 );
 
-
-insert into usuarios (nome, email, senha) values ("Vitor", "user@localhost", "123");

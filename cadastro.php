@@ -23,7 +23,7 @@
             <h2>Criar sua conta</h2>
             <p>Coloque os seu dados abaixo para criar sua conta no TipoNetflix.</p>
 
-            <form action="cadastro.php" method="POST">
+            <form method="POST" action="../projetonetflix/processamento/processamento.php">
 
                 <label>Nome</label>
                 <input type="text" name="inputNome"
