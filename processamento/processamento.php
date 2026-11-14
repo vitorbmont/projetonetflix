@@ -39,6 +39,34 @@ if (!empty($_POST['inputNome']) && !empty($_POST['inputSobrenome']) &&
 
 }
 
+if (!empty($_POST['email']) && !empty($_POST['senha'])) {
+
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $usuario = consultarUsuario($email);
+
+    if ($usuario && password_verify($senha, $usuario['senha'])) {
+
+    session_regenerate_id(true);
+
+    $_SESSION['id_usuario'] = $usuario['id'];
+    $_SESSION['nome_usuario'] = $usuario['nome'];
+    $_SESSION['email_usuario'] = $usuario['email'];
+
+    header("Location: ../principal.php");
+    exit;
+
+} else {
+    echo "E-mail ou senha incorretos!";
+}
+
+} else {
+
+    echo "Preencha todos os campos!";
+
+}
+
 
 
 ?>

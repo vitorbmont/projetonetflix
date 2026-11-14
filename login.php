@@ -8,7 +8,7 @@
 <body>
     <div class="formulario">
         <h2>Entrar na TipoNetflix</h2>
-        <form action="login.php" method="POST">
+        <form action="../projetonetflix/processamento/processamento.php" method="POST">
             <input type="email" name="email" placeholder="E-mail" required>
             <input type="password" name="senha" placeholder="Senha" required>
             <button type="submit">ENTRAR</button>
