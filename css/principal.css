@@ -1,0 +1,90 @@
+body {
+    background-color: #141414;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #222;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: red;
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.destaque {
+    background: linear-gradient(to right, #333, #141414);
+    padding: 60px 30px;
+    min-height: 200px;
+}
+
+.destaque h2 {
+    font-size: 35px;
+}
+
+.destaque p {
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+main {
+    padding: 30px;
+}
+
+main h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.catalogo {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+.serie {
+    background-color: #333;
+    padding: 15px;
+    min-width: 220px;
+    width: 220px;
+    text-align: center;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.serie img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.serie a {
+    display: inline-block;
+    margin-top: 8px;
+    text-decoration: none;
+}

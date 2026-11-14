@@ -1,0 +1,166 @@
+/* Estilos gerais da página baseados no padrão Netflix do projeto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #141414;
+    color: white;
+    margin: 0;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #222;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #e50914;
+    margin: 0;
+    font-size: 28px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.detalhes {
+    background-color: #292929;
+    padding: 35px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.detalhes h2 {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.categoria {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.detalhes p {
+    line-height: 1.6;
+    color: #ddd;
+}
+
+/* Container que simula o Player de vídeo no topo */
+.player-container {
+    background: #000;
+    width: 100%;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #444;
+}
+
+.player-container h2 {
+    font-size: 22px;
+    color: #fff;
+}
+
+/* Listagem de episódios */
+.lista-episodios {
+    margin-top: 25px;
+}
+
+.lista-episodios h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: #fff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 6px;
+}
+
+.episodio-card {
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #383838;
+    transition: background 0.2s;
+}
+
+.episodio-card:hover {
+    background-color: #262626;
+}
+
+.episodio-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.episodio-info strong {
+    font-size: 15px;
+    color: #fff;
+}
+
+.episodio-info span {
+    color: #aaa;
+    font-size: 13px;
+}
+
+/* Camadas (Layers) / Barra de Progresso estilo Netflix */
+.netflix-progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #444;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.netflix-progress-fill {
+    height: 100%;
+    background-color: #e50914; /* Vermelho padrão da Netflix */
+    border-radius: 3px;
+}
+
+/* Botão ou link de voltar */
+.voltar {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    background-color: #333;
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.voltar:hover {
+    background-color: #444;
+}
