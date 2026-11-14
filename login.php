@@ -2,12 +2,12 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Login - Tipo Netflix</title>
+    <title>Login - TipoNetflix</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <div class="formulario">
-        <h2>Entrar na Netflix</h2>
+        <h2>Entrar no TipoNetflix</h2>
         <form action="login.php" method="POST">
             <input type="email" name="email" placeholder="E-mail" required>
             <input type="password" name="senha" placeholder="Senha" required>
