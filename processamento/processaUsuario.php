@@ -2,7 +2,7 @@
 
 //Cadastro de usuario fatecflix
 
-require_once "funcoesBD.php";
+require_once __DIR__ . "/funcoesBD.php";
 
 if (!empty($_POST['inputNome']) && !empty($_POST['inputSobrenome']) &&
     !empty($_POST['inputEmail']) && !empty($_POST['inputNascimento']) &&
@@ -19,10 +19,8 @@ if (!empty($_POST['inputNome']) && !empty($_POST['inputSobrenome']) &&
         die("As senhas não coincidem!");
     }
 
-    // Criptografa a senha
     $senha = password_hash($senha, PASSWORD_DEFAULT);
 
-    // Insere o usuário no banco
     if (inserirUsuario($nome, $sobrenome, $email, $dtNascimento, $senha)) {
 
         echo "Cadastro realizado com sucesso!";
@@ -66,6 +64,8 @@ if (!empty($_POST['email']) && !empty($_POST['senha'])) {
     echo "Preencha todos os campos!";
 
 }
+
+
 
 
 

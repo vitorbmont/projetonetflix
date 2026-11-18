@@ -1,8 +1,7 @@
 <?php
-// Pega o nome do filme ou série de qualquer um dos parâmetros possíveis da URL
+
 $titulo = $_GET['serie'] ?? $_GET['filme'] ?? $_GET['titulo'] ?? 'A Última Fronteira';
 
-// Dicionário unificado de sinopses (séries e filmes)
 $sinopses = [
     // Séries
     "A Última Fronteira" => "Um grupo de sobreviventes precisa enfrentar perigos em um mundo desconhecido para encontrar um novo lar.",
@@ -10,7 +9,7 @@ $sinopses = [
     "Código Zero" => "Um grupo de especialistas tenta impedir uma ameaça tecnológica.",
     "Além do Tempo" => "Uma viagem inesperada muda o destino de várias pessoas.",
     "O Último Reino" => "Um guerreiro luta para proteger seu reino de seus inimigos.",
-    
+
     // Filmes
     "Resgate Implacável" => "Um agente especial precisa correr contra o tempo para salvar sua família de uma organização criminosa.",
     "Noite de Crime" => "Durante uma noite caótica, civis comuns precisam fazer de tudo para sobreviver às ruas perigosas.",

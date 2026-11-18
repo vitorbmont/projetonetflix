@@ -1,4 +1,9 @@
+
 <?php
+
+require_once __DIR__ . "/processamento/funcoesBD.php";
+
+// Filmes e séries pré-cadastrados
 $series = [
     [
         "nome" => "Cidade Sombria",
@@ -32,7 +37,27 @@ $filmes = [
         "imagem" => "img/Fuga_Alucinante.png"
     ]
 ];
+
+$seriesBanco = consultarSeries();
+$filmesBanco = consultarFilmes();
+
+// ADICIONA AS SÉRIES DO BANCO
+foreach ($seriesBanco as $serieBanco) {
+    $series[] = [
+        "nome" => $serieBanco['titulo'],
+        "imagem" => "img/" . $serieBanco['imagem']
+    ];
+}
+
+// ADICIONA OS FILMES DO BANCO
+foreach ($filmesBanco as $filmeBanco) {
+    $filmes[] = [
+        "nome" => $filmeBanco['titulo'],
+        "imagem" => "img/" . $filmeBanco['capa']
+    ];
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -110,13 +135,13 @@ $filmes = [
 
                     <h3><?php echo $filme['nome']; ?></h3>
 
-                    <!-- CORRIGIDO: Agora aponta para maisSobreSerie.php com ?serie= -->
-                    <a href="maisSobreSerie.php?serie=<?php echo urlencode($filme['nome']); ?>">
+                    <!-- CORRIGIDO: Agora aponta para maisSobreFilme.php com ?filme= -->
+                    <a href="maisSobreFilme.php?filme=<?php echo urlencode($filme['nome']); ?>">
                         <button>Assistir</button>
                     </a>
 
-                    <!-- CORRIGIDO: Agora aponta para detalhes.php com ?serie= -->
-                    <a href="detalhes.php?serie=<?php echo urlencode($filme['nome']); ?>">
+                    <!-- CORRIGIDO: Agora aponta para detalhes.php com ?filme= -->
+                    <a href="detalhes.php?filme=<?php echo urlencode($filme['nome']); ?>">
                         <button>Mais informações</button>
                     </a>
                 </div>

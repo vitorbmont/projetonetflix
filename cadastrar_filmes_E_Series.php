@@ -1,73 +1,92 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Conteúdo - TipoNetflix</title>
-    <link rel="stylesheet" href="css/cadastrar_filmes_E_Series.css">
-    <script>
-        // Função em JavaScript para alternar os campos dependendo da escolha
-        function alternarCampos() {
-            var tipo = document.getElementById("tipoSelect").value;
-            var camposFilme = document.getElementById("camposFilme");
-            var camposSerie = document.getElementById("camposSerie");
-
-            if (tipo === "filme") {
-                camposFilme.style.display = "block";
-                camposSerie.style.display = "none";
-            } else {
-                camposFilme.style.display = "none";
-                camposSerie.style.display = "block";
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="../css/cadastrar_filmes_E_Series.css">
 </head>
+
 <body>
 
-    <header>
-        <h1>TipoNetflix</h1>
-        <a href="principal.php">Voltar ao Início</a>
-    </header>
+<header>
+    <h1>TipoNetflix</h1>
+    <a href="principal.php">Voltar ao Início</a>
+</header>
 
-    <main>
-        <div class="cadastro" style="max-width: 500px; margin: auto;">
-            
-            <h2>Novo Cadastro</h2>
-            <p>O que você deseja adicionar ao catálogo?</p>
+<main>
+    <div class="cadastro">
 
-            <form action="processarCadastro.php" method="POST">
+        <h2>Novo Cadastro</h2>
+        <p>O que você deseja adicionar ao catálogo?</p>
 
-                <!-- Escolha principal -->
-                <label>Deseja cadastrar:</label>
-                <select id="tipoSelect" name="tipo" onchange="alternarCampos()" required style="padding: 12px; margin-bottom: 18px; border: 1px solid #555; border-radius: 4px; background-color: #333; color: white; width: 100%;">
-                    <option value="filme">Filme</option>
-                    <option value="serie">Série</option>
-                </select>
+        <form action="../projetonetflix/processamento/processarFilmeSerie.php"
+              method="POST"
+              enctype="multipart/form-data">
 
-                <!-- Campos Comuns (Nome e Imagem que você já usa no projeto) -->
-                <label>Título</label>
-                <input type="text" name="titulo" placeholder="Ex: Resgate Implacável" required>
+            <label>Tipo de conteúdo</label>
+            <select name="tipo" id="tipoSelect" onchange="alternarCampos()">
+                <option value="filme">Filme</option>
+                <option value="serie">Série</option>
+            </select>
 
-                <label>Caminho da Imagem (Capa)</label>
-                <input type="text" name="imagem" placeholder="Ex: img/filme.png" required>
+            <label>Título</label>
+            <input type="text" name="titulo" required>
 
-                <!-- CAMPO EXCLUSIVO DE FILME -->
-                <div id="camposFilme">
-                    <label>Duração do Filme</label>
-                    <input type="text" name="duracao" placeholder="Ex: 2h 10m">
-                </div>
+            <label>Sinopse</label>
+            <textarea name="sinopse" required></textarea>
 
-                <!-- CAMPO EXCLUSIVO DE SÉRIE (Fica oculto por padrão até selecionar Série) -->
-                <div id="camposSerie" style="display: none;">
-                    <label>Quantidade de Temporadas</label>
-                    <input type="number" name="temporadas" placeholder="Ex: 1">
-                </div>
+            <label>Gênero</label>
+            <input type="text" name="genero" required>
 
-                <button type="submit">Salvar no Catálogo</button>
+            <label>Ano de lançamento</label>
+            <input type="number" name="ano" min="1888" required>
 
-            </form>
+            <label>Classificação indicativa</label>
+            <input type="text" name="classificacao"
+                   placeholder="Ex: 16 anos">
 
-        </div>
-    </main>
+            <label>Capa</label>
+            <input type="file" name="imagem"
+                   accept="image/png, image/jpeg, image/webp" required>
+
+            <div id="camposFilme">
+                <label>Duração (minutos)</label>
+                <input type="number" name="duracao"
+                       id="duracao" min="1" required>
+            </div>
+
+            <div id="camposSerie" hidden>
+                <label>Quantidade de episódios</label>
+                <input type="number" name="episodios"
+                       id="episodios" min="1">
+            </div>
+
+            <button type="submit">Salvar no Catálogo</button>
+
+        </form>
+    </div>
+</main>
+
+<script>
+    function alternarCampos() {
+        const tipo = document.getElementById("tipoSelect").value;
+
+        const camposFilme = document.getElementById("camposFilme");
+        const camposSerie = document.getElementById("camposSerie");
+
+        const duracao = document.getElementById("duracao");
+        const episodios = document.getElementById("episodios");
+
+        camposFilme.hidden = tipo !== "filme";
+        camposSerie.hidden = tipo !== "serie";
+
+        duracao.required = tipo === "filme";
+        episodios.required = tipo === "serie";
+    }
+
+    alternarCampos();
+</script>
 
 </body>
 </html>
