@@ -1,4 +1,3 @@
-
 <?php
 
 function conectarBD() {
@@ -391,6 +390,24 @@ function consultarMediaAvaliacao($tipo, $conteudoId) {
         "media" => $linha['total'] > 0 ? round($linha['media'], 1) : null,
         "total" => (int)$linha['total']
     ];
+}
+
+#listar todos os usuarios cadastrados (sem a senha)
+function consultarUsuarios() {
+
+    $conexao = conectarBD();
+
+    $sql = "SELECT id, nome, sobrenome, email, data_nascimento, data_cadastro
+            FROM usuarios
+            ORDER BY data_cadastro DESC";
+
+    $consulta = mysqli_query($conexao, $sql);
+
+    $usuarios = mysqli_fetch_all($consulta, MYSQLI_ASSOC);
+
+    mysqli_close($conexao);
+
+    return $usuarios;
 }
 
 ?>

@@ -20,7 +20,10 @@ if (!isset($_SESSION['id_moderador'])) {
 
 <header>
     <h1>FatecFlix</h1>
-    <a href="logout.php">Sair</a>
+    <nav>
+        <a href="listaUsuarios.php">Usuários cadastrados</a>
+        <a href="logout.php">Sair</a>
+    </nav>
 </header>
 
 <main>
