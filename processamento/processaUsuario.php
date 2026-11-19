@@ -1,72 +1,60 @@
 <?php
 
-//Cadastro de usuario fatecflix
+session_start();
 
 require_once __DIR__ . "/funcoesBD.php";
 
+// CADASTRO
 if (!empty($_POST['inputNome']) && !empty($_POST['inputSobrenome']) &&
     !empty($_POST['inputEmail']) && !empty($_POST['inputNascimento']) &&
-    !empty($_POST['inputSenha']) && !empty($_POST['inputConfirmarSenha'])){
+    !empty($_POST['inputSenha']) && !empty($_POST['inputConfirmarSenha'])) {
 
     $nome = $_POST['inputNome'];
     $sobrenome = $_POST['inputSobrenome'];
     $email = $_POST['inputEmail'];
     $dtNascimento = $_POST['inputNascimento'];
     $senha = $_POST['inputSenha'];
-    $confirmarsenha = $_POST['inputConfirmarSenha'];
 
-    if ($senha != $confirmarsenha) {
-        die("As senhas não coincidem!");
+    if ($senha != $_POST['inputConfirmarSenha']) {
+        die("As senhas não coincidem! <a href='../cadastro.php'>Voltar</a>");
     }
 
-    $senha = password_hash($senha, PASSWORD_DEFAULT);
-
-    if (inserirUsuario($nome, $sobrenome, $email, $dtNascimento, $senha)) {
-
-        echo "Cadastro realizado com sucesso!";
-
-    } else {
-
-        echo "Erro ao realizar cadastro!";
-
+    if (strlen($senha) < 8) {
+        die("A senha precisa ter pelo menos 8 caracteres. <a href='../cadastro.php'>Voltar</a>");
     }
 
-} else {
+    if (consultarUsuario($email)) {
+        die("Este e-mail já está cadastrado! <a href='../cadastro.php'>Voltar</a>");
+    }
 
-    echo "Preencha todos os campos!";
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-}
+    if (inserirUsuario($nome, $sobrenome, $email, $dtNascimento, $senhaHash)) {
+        header("Location: ../loginUsuario.php?cadastro=ok");
+        exit;
+    }
 
-if (!empty($_POST['email']) && !empty($_POST['senha'])) {
+    die("Erro ao realizar cadastro! <a href='../cadastro.php'>Voltar</a>");
 
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+// LOGIN
+} elseif (!empty($_POST['email']) && !empty($_POST['senha'])) {
 
-    $usuario = consultarUsuario($email);
+    $usuario = consultarUsuario($_POST['email']);
 
-    if ($usuario && password_verify($senha, $usuario['senha'])) {
+    if ($usuario && password_verify($_POST['senha'], $usuario['senha'])) {
 
-    session_regenerate_id(true);
+        session_regenerate_id(true);
 
-    $_SESSION['id_usuario'] = $usuario['id'];
-    $_SESSION['nome_usuario'] = $usuario['nome'];
-    $_SESSION['email_usuario'] = $usuario['email'];
+        $_SESSION['usuario_id'] = $usuario['id'];
+        $_SESSION['nome_usuario'] = $usuario['nome'];
 
-    header("Location: ../principal.php");
+        header("Location: ../principal.php");
+        exit;
+    }
+
+    header("Location: ../loginUsuario.php?erro=1");
     exit;
 
 } else {
-    echo "E-mail ou senha incorretos!";
+    die("Preencha todos os campos! <a href='../loginUsuario.php'>Voltar</a>");
 }
-
-} else {
-
-    echo "Preencha todos os campos!";
-
-}
-
-
-
-
-
-?>

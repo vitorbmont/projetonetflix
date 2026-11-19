@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - TipoNetflix</title>
+    <title>Cadastro - FatecFlix</title>
 
     <link rel="stylesheet" href="css/cadastro.css">
 </head>
@@ -13,7 +13,7 @@
 
     <header>
         <h1>Tipo Netflix</h1>
-        <a href="login.php">Já possui uma conta? Entrar</a>
+        <a href="loginUsuario.php">Já possui uma conta? Entrar</a>
     </header>
 
     <main>
@@ -21,7 +21,7 @@
         <div class="cadastro">
 
             <h2>Criar sua conta</h2>
-            <p>Coloque os seu dados abaixo para criar sua conta no TipoNetflix.</p>
+            <p>Coloque os seu dados abaixo para criar sua conta no FatecFlix.</p>
 
             <form method="POST" action="../projetonetflix/processamento/processaUsuario.php">
 

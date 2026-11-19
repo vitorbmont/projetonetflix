@@ -1,17 +1,26 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id_moderador'])) {
+    header("Location: loginModerador.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <title>Cadastrar Conteúdo - TipoNetflix</title>
-    <link rel="stylesheet" href="../css/cadastrar_filmes_E_Series.css">
+    <title>Cadastrar Conteúdo - FatecFlix</title>
+    <link rel="stylesheet" href="css/cadastrar_filmes_E_Series.css">
 </head>
 
 <body>
 
 <header>
-    <h1>TipoNetflix</h1>
-    <a href="principal.php">Voltar ao Início</a>
+    <h1>FatecFlix</h1>
+    <a href="logout.php">Sair</a>
 </header>
 
 <main>
@@ -20,9 +29,9 @@
         <h2>Novo Cadastro</h2>
         <p>O que você deseja adicionar ao catálogo?</p>
 
-        <form action="../projetonetflix/processamento/processarFilmeSerie.php"
-              method="POST"
-              enctype="multipart/form-data">
+        <form action="processamento/processarFilmeSerie.php"
+      method="POST"
+      enctype="multipart/form-data">
 
             <label>Tipo de conteúdo</label>
             <select name="tipo" id="tipoSelect" onchange="alternarCampos()">
@@ -40,11 +49,11 @@
             <input type="text" name="genero" required>
 
             <label>Ano de lançamento</label>
-            <input type="number" name="ano" min="1888" required>
+            <input type="number" name="ano" min="1901" required>
 
             <label>Classificação indicativa</label>
             <input type="text" name="classificacao"
-                   placeholder="Ex: 16 anos">
+                   placeholder="Ex: 16 anos" required>
 
             <label>Capa</label>
             <input type="file" name="imagem"

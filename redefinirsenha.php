@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redefinir Senha - TipoNetflix</title>
+    <title>Redefinir Senha - FatecFlix</title>
 
     <link rel="stylesheet" href="css/redefinirsenha.css">
 </head>
@@ -12,7 +12,7 @@
 <body>
 
     <header>
-        <h1>TipoNetflix</h1>
+        <h1>FatecFlix</h1>
     </header>
 
     <main>
@@ -23,7 +23,7 @@
 
             <p>Informe seu e-mail e escolha uma nova senha para sua conta.</p>
 
-            <form action="redefinirsenha.php" method="POST">
+            <form action="processamento/processarRedefinirSenha.php" method="POST">
 
                 <label>E-mail cadastrado</label>
                 <input type="email" name="inputEmail"
@@ -41,7 +41,7 @@
 
             </form>
 
-            <a href="login.php">Voltar para o login</a>
+            <a href="loginUsuario.php">Voltar para o login</a>
 
         </div>
 

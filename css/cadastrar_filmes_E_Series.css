@@ -112,3 +112,48 @@ button {
 button:hover {
     background-color: #b20710;
 }
+
+/* Menu do topo */
+header nav a {
+    margin-left: 20px;
+}
+
+.usuario-nome {
+    margin-left: 20px;
+    color: #ccc;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Versão larga do cartão, para tabelas */
+.cadastro.larga {
+    max-width: 1000px;
+}
+
+.cadastro p.sucesso {
+    color: #46d369;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 35px;
+}
+
+th, td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    font-size: 14px;
+}
+
+th {
+    color: #b3b3b3;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+tr:hover td {
+    background-color: #1f1f1f;
+}

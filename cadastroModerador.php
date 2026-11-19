@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Moderador - TipoNetflix</title>
-    <link rel="stylesheet" href="../css/cadastro.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Moderador - FatecFlix</title>
+
+    <link rel="stylesheet" href="css/cadastrarModerador.css">
 </head>
+
 <body>
 
-    <h1>Cadastro de Moderador</h1>
+    <header>
+        <h1>Tipo Netflix</h1>
+        <a href="loginModerador.php">Já possui uma conta? Entrar</a>
+    </header>
 
-     <form method="POST" action="../projetonetflix/processamento/processaModerador.php">
+    <main>
 
-        <label>Nome</label>
-        <input type="text" name="inputNome"
-            placeholder="Digite seu nome" required>
+        <div class="cadastro">
 
-        <label>E-mail</label>
-        <input type="email" name="inputEmail"
-            placeholder="Digite seu e-mail" required>
+            <h2>Cadastro de moderador</h2>
+            <p>Preencha os dados abaixo para criar sua conta de moderador.</p>
 
-        <label>Senha:</label>
-        <input type="password" name="inputSenha"
-            placeholder="Digite sua senha" required>
+            <form method="POST" action="processamento/processaModerador.php">
 
-        <label>Confirmar senha:</label>
-        <input type="password" name="inputConfirmarSenha"
-            placeholder="Confirme sua senha" required>
+                <label>Nome</label>
+                <input type="text" name="inputNome"
+                    placeholder="Digite seu nome" required>
 
-        <button type="submit">Cadastrar</button>
+                <label>E-mail</label>
+                <input type="email" name="inputEmail"
+                    placeholder="Digite seu e-mail" required>
 
-    </form>
+                <label>Senha</label>
+                <input type="password" name="inputSenha"
+                    placeholder="Crie uma senha" required>
 
-    <a href="formLoginModerador.php">Já possui uma conta? Faça login</a>
+                <label>Confirmar senha</label>
+                <input type="password" name="inputConfirmarSenha"
+                    placeholder="Digite a senha novamente" required>
+
+                <button type="submit">Cadastrar</button>
+
+            </form>
+
+        </div>
+
+    </main>
 
 </body>
 </html>

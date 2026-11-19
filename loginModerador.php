@@ -2,22 +2,23 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Login de Moderador - TipoNetflix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Moderador - FatecFlix</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+    <div class="formulario">
+        <h2>Entrar como Moderador</h2>
 
-    <h1>Login de Moderador</h1>
+        <form method="POST" action="processamento/processaModerador.php">
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            
+            <button type="submit">ENTRAR</button>
+        </form>
 
-    <form method="POST" action="../projetonetflix/processamento/processarFilmeSerie.php">
-
-        <input type="email" name="email" required>
-
-        <input type="password" name="senha" required>
-
-        <button type="submit">Entrar</button>
-
-    </form>
-
+        <p><a href="cadastroModerador.php">Criar conta de moderador</a></p>
+        <p><a href="loginUsuario.php">Entrar como usuário</a></p>
+    </div>
 </body>
 </html>

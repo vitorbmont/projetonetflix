@@ -1,6 +1,6 @@
-
 <?php
 
+require_once __DIR__ . "/processamento/protegerUsuario.php";
 require_once __DIR__ . "/processamento/funcoesBD.php";
 
 // Filmes e séries pré-cadastrados
@@ -64,46 +64,30 @@ foreach ($filmesBanco as $filmeBanco) {
 
 <head>
     <meta charset="UTF-8">
-    <title>TipoNetflix</title>
+    <title>FatecFlix</title>
     <link rel="stylesheet" href="css/principal.css">
 </head>
 
 <body>
 
     <header>
-        <h1>TipoNetflix</h1>
+        <h1>FatecFlix</h1>
 
         <nav>
+            <span class="usuario-nome" style="color: #ff0000; font-weight: bold; text-transform: uppercase;">Olá, <?php echo htmlspecialchars($_SESSION['nome_usuario'] ?? ''); ?></span>
             <a href="principal.php">Início</a>
             <a href="#secao-series">Séries</a>
             <a href="#secao-filmes">Filmes</a>
             <a href="favoritos.php">Minha lista ★</a>
-            <a href="cadastrar.php" style="color: #e50914; font-weight: bold;">+ Cadastrar</a> <!-- Novo botão -->
-            <a href="login.php">Sair</a>
+            <a href="cadastrar_filmes_E_Series.php" style="color: #e50914; font-weight: bold;">+ Cadastrar</a> <!-- Novo botão -->
+            <a href="logout.php">Sair</a>
         </nav>
     </header>
 
-    <section class="destaque">
-        <h2>A Última Fronteira</h2>
-
-        <p>Ficção científica | 2026 | 1 temporada</p>
-
-        <p>
-            Em um mundo desconhecido, um grupo de sobreviventes
-            precisa enfrentar perigos para encontrar um novo lar.
-        </p>
-
-        <a href="maisSobreSerie.php?serie=A Última Fronteira">
-            <button>Assistir</button>
-        </a>
-
-        <a href="detalhes.php?serie=A Última Fronteira">
-            <button>Mais informações</button>
-        </a>
-    </section>
+    
 
     <main>
-        <h2 id="secao-series">Outras séries</h2>
+        <h2 id="secao-series">Séries</h2>
 
         <div class="catalogo">
             <?php foreach ($series as $serie) { ?>
@@ -135,12 +119,10 @@ foreach ($filmesBanco as $filmeBanco) {
 
                     <h3><?php echo $filme['nome']; ?></h3>
 
-                    <!-- CORRIGIDO: Agora aponta para maisSobreFilme.php com ?filme= -->
-                    <a href="maisSobreFilme.php?filme=<?php echo urlencode($filme['nome']); ?>">
+                    <a href="maisSobreSerie.php?filme=<?php echo urlencode($filme['nome']); ?>">
                         <button>Assistir</button>
                     </a>
 
-                    <!-- CORRIGIDO: Agora aponta para detalhes.php com ?filme= -->
                     <a href="detalhes.php?filme=<?php echo urlencode($filme['nome']); ?>">
                         <button>Mais informações</button>
                     </a>

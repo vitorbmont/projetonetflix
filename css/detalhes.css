@@ -49,17 +49,25 @@ main {
     line-height: 1.6;
 }
 
-.favorito {
+.voltar {
     display: inline-block;
-    background-color: red;
-    color: white;
-    padding: 12px 18px;
+    color: #fff;
     text-decoration: none;
+    background-color: #333;
+    padding: 10px 16px;
     border-radius: 5px;
+    font-size: 14px;
     margin-top: 15px;
+    transition: background 0.2s;
 }
 
-.voltar {
-    color: white;
-    text-decoration: none;
+.voltar:hover {
+    background-color: #444;
+}
+
+.usuario-nome {
+    margin-left: 20px;
+    color: #ccc;
+    font-weight: bold;
+    font-size: 14px;
 }

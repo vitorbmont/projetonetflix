@@ -16,7 +16,10 @@ $sinopse = trim($_POST['sinopse'] ?? '');
 $genero = trim($_POST['genero'] ?? '');
 $ano = $_POST['ano'] ?? '';
 $classificacao = $_POST['classificacao'] ?? '';
-$moderador_id = 1;
+if (!isset($_SESSION['id_moderador'])) {
+    die("Apenas moderadores podem cadastrar. <a href='../loginModerador.php'>Fazer login</a>");
+}
+$moderador_id = (int)$_SESSION['id_moderador'];
 
 // Verifica os campos obrigatórios
 if (
@@ -94,18 +97,18 @@ if ($tipo == "filme") {
 
 } elseif ($tipo == "serie") {
 
-    $episodios = $_POST['episodios'] ?? '';
+    $episodios = (int)($_POST['episodios'] ?? 0);
 
-    $resultado = inserirSerie(
-        $titulo,
-        $sinopse,
-        $genero,
-        $ano,
-        (int)$episodios,
-        $classificacao,
-        $nomeImagem,
-        $moderador_id
-    );
+    if ($episodios < 1) {
+        unlink($caminhoImagem);
+        die("A série precisa ter pelo menos 1 episódio!");
+    }
+
+    $resultado = inserirSerie($titulo, $sinopse, $genero, $ano, $episodios, $classificacao, $nomeImagem, $moderador_id);
+
+    if ($resultado) {
+        inserirEpisodios($resultado, $episodios);
+    }
 
 } else {
 
@@ -132,3 +135,4 @@ if ($resultado) {
 }
 
 ?>
+ 

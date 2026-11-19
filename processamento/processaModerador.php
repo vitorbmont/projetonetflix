@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 // Cadastro e login de moderador
 
 require_once __DIR__ . "/funcoesBD.php";
@@ -46,7 +47,7 @@ if (!empty($_POST['inputNome']) &&
         $_SESSION['id_moderador'] = $moderador['id'];
         $_SESSION['nome_moderador'] = $moderador['nome'];
 
-        header("Location: ../principal.php");
+        header("Location: ../cadastrar_filmes_E_Series.php");
         exit;
 
     } else {

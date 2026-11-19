@@ -26,7 +26,7 @@ create table filmes (
   genero varchar(80) not null,
   ano_lancamento year not null,
   duracao int not null,
-  classificacao_indicativa VARCHAR(10),
+  classificacao_indicativa VARCHAR(30),
   capa varchar(255),
   moderador_id int not null,
   data_cadastro timestamp default current_timestamp,
@@ -47,5 +47,35 @@ CREATE TABLE series (
   data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
   FOREIGN KEY (moderador_id) REFERENCES moderadores(id)
+);
+
+CREATE TABLE episodios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    serie_id INT NOT NULL,
+    numero INT NOT NULL,
+    titulo VARCHAR(255) NOT NULL,
+    duracao INT NOT NULL DEFAULT 45,
+    FOREIGN KEY (serie_id) REFERENCES series(id) ON DELETE CASCADE
+);
+
+CREATE TABLE favoritos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    tipo ENUM('filme', 'serie') NOT NULL,
+    conteudo_id INT NOT NULL,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY favorito_unico (usuario_id, tipo, conteudo_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+CREATE TABLE avaliacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    tipo ENUM('filme', 'serie') NOT NULL,
+    conteudo_id INT NOT NULL,
+    nota TINYINT NOT NULL,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY avaliacao_unica (usuario_id, tipo, conteudo_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
